@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import TaskListComponent from './components/container/task_list';
+import GreetingStyles from './components/pure/forms/GreetingStyles';
 import Ejemplo1 from './hooks/ejemplo1';
 import Ejemplo2 from './hooks/ejemplo2';
 import MiComponenteConContexto from './hooks/ejemplo3';
@@ -11,7 +12,7 @@ function App() {
   return (
     <div>
     
-    {/* <TaskListComponent/> */}
+    { /*<TaskListComponent/>*/ }
 
     {/* <Ejemplo1 /> */}
 
@@ -20,13 +21,15 @@ function App() {
 
     {/* <MiComponenteConContexto /> */}
 
-    <Ejemplo4 nombre="Lenin Fernando">
+    {/* <Ejemplo4 nombre="Lenin Fernando">
 
       <h3>
         contenido del props.children
       </h3>
 
-    </Ejemplo4>
+    </Ejemplo4> */}
+
+    <GreetingStyles name="Fernando" />
     </div>
   );
 }

@@ -12,7 +12,7 @@ const RegisterFrom = () => {
 
         }
 
-    ];
+    ];c
 
     
     const [data, setData] = useState(initialData);
