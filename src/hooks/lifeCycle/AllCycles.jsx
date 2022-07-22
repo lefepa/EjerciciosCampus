@@ -1,4 +1,4 @@
-import React {useEffect} from 'react';
+import React, {useEffect} from 'react';
 
 const AllCycles = () => {
 
@@ -7,7 +7,7 @@ const AllCycles = () => {
 
         const intervalID = setInterval(() => {
 
-            document.title='${new Date()} '
+            //document.title='${new Date()}';
             console.log("actualizado el componente")
 
         }, 1000);

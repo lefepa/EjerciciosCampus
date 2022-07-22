@@ -6,13 +6,15 @@ import Ejemplo1 from './hooks/ejemplo1';
 import Ejemplo2 from './hooks/ejemplo2';
 import MiComponenteConContexto from './hooks/ejemplo3';
 import Ejemplo4 from './hooks/ejemplo4';
-
-
+import Ejercicios from '../src/components/ejercicios'
+import Clock from '../src/components/ejercicios';
+import Solucion from './components/solucion';
+import AllCycles from './hooks/lifeCycle/AllCycles';
 function App() {
   return (
     <div>
     
-    { /*<TaskListComponent/>*/ }
+    <TaskListComponent/>
 
     {/* <Ejemplo1 /> */}
 
@@ -29,7 +31,9 @@ function App() {
 
     </Ejemplo4> */}
 
-    <GreetingStyles name="Fernando" />
+    {/*<GreetingStyles name="Fernando" />*/}
+
+    {/* <Solucion /> */}
     </div>
   );
 }
