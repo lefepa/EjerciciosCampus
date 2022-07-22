@@ -10,11 +10,12 @@ import Ejercicios from '../src/components/ejercicios'
 import Clock from '../src/components/ejercicios';
 import Solucion from './components/solucion';
 import AllCycles from './hooks/lifeCycle/AllCycles';
+import { Father } from './components/container/father';
 function App() {
   return (
     <div>
     
-    <TaskListComponent/>
+    {/* <TaskListComponent/> */}
 
     {/* <Ejemplo1 /> */}
 
@@ -34,6 +35,8 @@ function App() {
     {/*<GreetingStyles name="Fernando" />*/}
 
     {/* <Solucion /> */}
+
+    <Father />
     </div>
   );
 }
