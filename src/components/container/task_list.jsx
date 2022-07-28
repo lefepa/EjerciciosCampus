@@ -16,40 +16,61 @@ const TaskListComponent = () => {
     const defaulTask3= new  Task('example3', ' description 3', false, LEVELS.BLOCKING);
     
     const [tasks, setTasks] = useState([defaulTask1, defaulTask2, defaulTask3]);
-    const [loading, setloading] = useState(false);
+    const [loading, setloading] = useState(true);
 
     useEffect(() => {
         
         console.log("Task state have been modifiqued")
-        setloading(false)
+        setTimeout(() => {
+            setloading(false);
+        }, 2000
+        );
+       
         return () => {
 
             console.log("Task list componente is going to unmount")
           
         };
-    }, []);
+    }, [tasks])
 
 
+    function completeTask (task){
 
+        console.log("complete this task", task);
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask[index].completed= !tempTask[index].completed;
+        // we update the state of the comopnent and it will
+        // update the interaction of the tasks in order to
+        //show the task update
 
-
-    const changeCompleted = (id) => {
-        console.log("TODO: cambiar el estado de la tarea")
+        setTasks(tempTask);
 
     }
-    
-    return (
-        <div>
-            <div className='col-12'>
-                <div classame='card'>
-                    
-                    <div className='card-header p-3'>
-                        <h5>Your Task:</h5>
 
-                    </div>
-                    <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position: 'relative', height: '400px'}}>
-                        
-                        <table>
+    function deleteTask(task) {
+
+        console.log("complete this task", task);
+        const index = tasks.indexOf(task);
+        const tempTasks = [...tasks];
+        tempTasks.splice(index,1);
+        setTasks(tempTasks);
+
+
+    }
+
+    function addTask(task) {
+
+        console.log('delete this task', task);
+       const tempTasks = [...tasks];
+        tempTasks.push(task);
+        setTasks(tempTasks);
+
+    }
+
+    const Table = () => {
+        return (
+            <table>
                             <thead>
                                     <tr>
                                         <th scopr='col'> Title </th>     
@@ -69,7 +90,10 @@ const TaskListComponent = () => {
 
                                         <Taskcomponent 
                                         key={index}
-                                        task={task}/>
+                                        task={task}
+                                        complete={completeTask}
+                                        remove={deleteTask}   
+                                        />
 
                                     )
                                 })    
@@ -78,10 +102,49 @@ const TaskListComponent = () => {
                             </tbody>
                             {/* TODO: iterar sobre una lista de tareas */}
                         </table>
+        )
+
+    }
+
+    let tasksTable ;
+
+    if(tasks.length>0) {
+
+        tasksTable= <Table />
+    }  else {
+
+                tasksTable = (
+                <div>
+                    <h3> there are no tasks to show</h3>)
+                    <h4>Please, create one</h4>
+                </div>
+                )
+             }
+         
+            const loadingStyle = {
+
+                color: 'grey',
+                fontWeight: 'bold'
+
+            } 
+    
+    return (
+        <div style={{backgroundColor: 'white'}}>
+            <div className='col-12'>
+                <div classame='card'>
+                    
+                    <div className='card-header p-3'>
+                        <h5>Your Task:</h5>
+
                     </div>
-                    <TaskForm />
+                    <div className='card-body' data-mdb-perfect-scrollbar='true' style={{position: 'relative', height: '400px'}}>
+                      {loading? (<p style={loadingStyle}>LOADING.....</p>): tasksTable}   
+                        
+                    </div>
+                    
                 </div>
             </div>
+             <TaskForm add={addTask} length={tasks.length} /> 
        
             
         </div>  

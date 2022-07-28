@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import TaskListComponent from './components/container/task_list';
-import GreetingStyles from './components/pure/forms/GreetingStyles';
+//mport GreetingStyles from './components/pure/forms/GreetingStyles';
 import Ejemplo1 from './hooks/ejemplo1';
 import Ejemplo2 from './hooks/ejemplo2';
 import MiComponenteConContexto from './hooks/ejemplo3';
@@ -11,10 +11,19 @@ import Clock from '../src/components/ejercicios';
 import Solucion from './components/solucion';
 import AllCycles from './hooks/lifeCycle/AllCycles';
 import { Father } from './components/container/father';
+import OptionalRender from './components/pure/optionalRender';
+import LoginFormik from './components/pure/forms/loginFormik';
+import EjemploFormik from './components/pure/forms/ejemploFormik';
+import RegisterFormik from './components/pure/forms/registerFormik';
 function App() {
   return (
     <div>
-    
+{/*     
+    ejemplo de renderizado condicional */}
+
+    {/* <OptionalRender /> */}
+
+
     {/* <TaskListComponent/> */}
 
     {/* <Ejemplo1 /> */}
@@ -36,7 +45,13 @@ function App() {
 
     {/* <Solucion /> */}
 
-    <Father />
+    {/* <Father /> */}
+
+     {/* <LoginFormik />  */}
+
+    {/* <EjemploFormik /> */}
+    
+    <RegisterFormik />
     </div>
   );
 }

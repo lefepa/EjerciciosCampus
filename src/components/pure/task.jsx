@@ -5,7 +5,7 @@ import '../../styles/tasks.scss'
 import { LEVELS } from '../../models/levels.enum.js';
 
 
-const Taskcomponent = ({task}) => {
+const Taskcomponent = ({task, complete, remove}) => {
 
     useEffect(() => {
         console.log("tarea creada")
@@ -64,20 +64,31 @@ const Taskcomponent = ({task}) => {
     function taskIconCompleted () {
 
         if(task.completed)         {
-                return  (<i className="bi-toggle-on" style={{color:'green'}}></i>) 
+                return  (<i onClick={()=> complete(task)} className="bi-toggle-on" style={{color:'green'}}></i>) 
             
               }  else {
                   
-                 return   (<i className="bi-toggle-off"  style={{color:'grey'}}></i>) 
+                 return   (<i onClick={()=> complete(task)} className="bi-toggle-off"  style={{color:'grey'}}></i>) 
                   }
         
+    }
+
+    const taskCompleted = {
+        color: 'green',
+        textDecoration: 'line-through'
+    }
+    
+    const taskPending =  {
+    
+        fontWeight: 'bold',
+        color: 'tomato'
     }
 
 
     return (
         
 
-            <tr className='fw-normal'>
+            <tr className='fw-normal' style={task.completed ? taskCompleted : taskPending}>
                 <th>
                     <span className='ms-2'>{task.name}</span>
                 </th>
@@ -96,7 +107,7 @@ const Taskcomponent = ({task}) => {
                     {taskIconCompleted() }                 
 
                     {/* <span> {task.completed ? 'Completed' : 'Pending'} </span>   */}
-                    <i className="bi-trash" style={{color:'tomato'}}></i>   
+                    <i className="bi-trash" style={{color:'tomato'}} onClick={()=> remove(task)}></i>   
                 
                 
                 </td>
